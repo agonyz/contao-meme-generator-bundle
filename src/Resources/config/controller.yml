@@ -1,0 +1,25 @@
+services:
+  _defaults:
+    autoconfigure: true
+    public: false
+
+  # Content Element
+  Agonyz\ContaoMemeGeneratorBundle\Controller\MemeGeneratorContentElementController:
+    tags:
+      - name: contao.content_element
+        category: agonyz
+        type: meme_generator
+    arguments:
+      $requestHandler: '@Agonyz\ContaoMemeGeneratorBundle\Service\RequestHandler'
+      $tokenGenerator: '@Agonyz\ContaoMemeGeneratorBundle\Service\TokenGenerator'
+      $cacheTimeTopMemes: '%agonyz_contao_meme_generator.cache_top_memes%'
+      $loadBootstrap: '%agonyz_contao_meme_generator.load_bootstrap%'
+
+  # Backend Controller to handle api request
+  Agonyz\ContaoMemeGeneratorBundle\Controller\MemeGeneratorController:
+    calls:
+      - [ setContainer, [ '@Psr\Container\ContainerInterface' ] ]
+    arguments:
+      $requestHandler: '@Agonyz\ContaoMemeGeneratorBundle\Service\RequestHandler'
+      $contaoGeneralLogger: '@?monolog.logger.contao.general'
+      $contaoErrorLogger: '@?monolog.logger.contao.error'

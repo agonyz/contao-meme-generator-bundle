@@ -1,0 +1,28 @@
+<div class="wrapper">
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="my-content-element">
+            <label>
+                <select class="form-select" id="meme-selector">
+                    {% for meme in memes %}
+                        <option value="{{meme['id']}}">{{meme['name']}}</option>
+                    {% endfor %}
+                </select>
+            </label>
+            <input type="hidden" id="requestToken" value="{{requestToken}}">
+            <div id="box-container">
+            </div>
+            <button class="btn btn-primary" id="sendMeme">Generate</button>
+            <a id="show-template" href="" target="_blank" class="btn btn-primary">Show Template</a>
+
+            <img style="display:none" id="meme-image" alt="meme" src="" class="mt-5">
+            <div style="display: none" class="alert alert-warning alert-dismissible" id="meme-alert">
+                <strong>Warning! </strong><div id="error-info">There was a problem with your network connection.</div>
+                <button type="button" class="btn-close btn-meme-alert" data-bs-dismiss="alert"></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var memes = {{ memes|json_encode()|raw }}
+</script>

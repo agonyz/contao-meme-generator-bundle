@@ -1,0 +1,41 @@
+{
+    "name": "agonyz/contao-meme-generator-bundle",
+    "type": "contao-bundle",
+    "description": "Create memes inside the contao cms with the imgflip API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "agonyz",
+            "email": "agonyz@outlook.de"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "contao/core-bundle": "^4.13"
+    },
+    "require-dev": {
+        "contao/manager-plugin": "^2.0",
+        "contao/easy-coding-standard": "^4.3",
+        "phpunit/phpunit": "^9.0"
+    },
+    "extra": {
+        "contao-manager-plugin": "Agonyz\\ContaoMemeGeneratorBundle\\ContaoManager\\Plugin"
+    },
+    "autoload": {
+        "psr-4": {
+            "Agonyz\\ContaoMemeGeneratorBundle\\": "src/"
+        }
+    },
+    "scripts": {
+        "cs-fixer": [
+            "vendor/bin/ecs check src/ tests/ --fix --ansi"
+        ]
+    },
+    "config": {
+        "allow-plugins": {
+            "contao-components/installer": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "contao/manager-plugin": true
+        }
+    }
+}

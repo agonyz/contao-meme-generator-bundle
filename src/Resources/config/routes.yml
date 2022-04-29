@@ -1,0 +1,8 @@
+agonyz.generate_meme:
+  path: /contao/agonyz/generate-meme
+  methods: POST
+  defaults:
+    _controller: Agonyz\ContaoMemeGeneratorBundle\Controller\MemeGeneratorController::generateMeme
+    _scope: backend
+    _token_check: true
+    _custom_backend_view: false

@@ -1,0 +1,17 @@
+services:
+  _defaults:
+    autoconfigure: true
+    public: false
+
+  # Service to handle api requests
+  Agonyz\ContaoMemeGeneratorBundle\Service\RequestHandler:
+    arguments:
+      $client: '@http_client'
+      $imgflipUsername: '%agonyz_contao_meme_generator.username%'
+      $imgflipPassword: '%agonyz_contao_meme_generator.password%'
+
+  # Service to generate valid request token
+  Agonyz\ContaoMemeGeneratorBundle\Service\TokenGenerator:
+    arguments:
+      $csrfTokenManager: '@contao.csrf.token_manager'
+      $csrfTokenName: '%contao.csrf_token_name%'
