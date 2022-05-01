@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function generateMeme() {
             let memeData = getMemeData();
 
-            fetch('/contao/agonyz/generate-meme', {
+            fetch('/agonyz/generate-meme', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
